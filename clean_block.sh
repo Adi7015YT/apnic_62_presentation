@@ -28,14 +28,14 @@ echo "Removing iptables DROP rules for TLD nameservers..."
 
 # Clean up IPv4
 for ip in "${IPV4_TARGETS[@]}"; do
-  iptables -D OUTPUT -d "$ip" -p udp --dport 53 -j DROP 2>/dev/null
-  iptables -D OUTPUT -d "$ip" -p tcp --dport 53 -j DROP 2>/dev/null
+  iptables -D DOCKER-USER -d "$ip" -p udp --dport 53 -j DROP 2>/dev/null
+  iptables -D DOCKER-USER -d "$ip" -p tcp --dport 53 -j DROP 2>/dev/null
 done
 
 # Clean up IPv6
 for ip in "${IPV6_TARGETS[@]}"; do
-  ip6tables -D OUTPUT -d "$ip" -p udp --dport 53 -j DROP 2>/dev/null
-  ip6tables -D OUTPUT -d "$ip" -p tcp --dport 53 -j DROP 2>/dev/null
+  ip6tables -D DOCKER-USER -d "$ip" -p udp --dport 53 -j DROP 2>/dev/null
+  ip6tables -D DOCKER-USER -d "$ip" -p tcp --dport 53 -j DROP 2>/dev/null
 done
 
 echo "Cleanup complete. BIND can reach the nameservers again."

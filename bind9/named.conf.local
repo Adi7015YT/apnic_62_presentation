@@ -6,3 +6,21 @@
 // organization
 //include "/etc/bind/zones.rfc1918";
 
+zone "de" { 
+    type static-stub;
+    server-addresses { 
+        // All .in Nameservers
+        172.20.0.3;    // custom .de server
+    };
+};
+
+trust-anchors {
+    // de initial-ds 26755 8 2 "F341357809A5954311CCB82ADE114C6C1D724A75C0395137AA397803 5425E78D";
+    // "de" static-key 257 3 8 "AwEAAbWUSd/QN9Ae543xzdiacY6qbjwtZ21QfmdgxRdm4Z7bjjHWy249 uqxCyjjjoS4LDoRDKmj7ElffMKvTWKE1qFKu0p8TUy4wyhX0M+m5FUjv Q3CiZMi+qY7GSHA5B+Zd73cidmnTeb3e8lso6jEsXg05/VZ2AyAqWF6F exEIFxIqiwwLk4UP0BwZ17Ur3q1qx9VSbPMyHgQ9d6nHUN1EEJsTDA2v 0vKumsUyp74ZanRZ/bB/6IzpaaZyr5BLF5pSCNdbRNjVmkwYD0993vm7 9LueyOeibsoHRc16jhALrIJou1PFjdq7YQsYN0KtqRiJtaAfPprDBREp eamPuW/MnW0=";
+    // "de" static-key 257 3 8 "AwEAAbWUSd/QN9Ae543xzdiacY6qbjwtZ21QfmdgxRdm4Z7bjjHWy249uqxCyjjjoS4LDoRDKmj7ElffMKvTWKE1qFKu0p8TUy4wyhX0M+m5FUjvQ3CiZMi+qY7GSHA5B+Zd73cidmnTeb3e8lso6jEsXg05/VZ2AyAqWF6FexEIFxIqiwwLk4UP0BwZ17Ur3q1qx9VSbPMyHgQ9d6nHUN1EEJsTDA2v0vKumsUyp74ZanRZ/bB/6IzpaaZyr5BLF5pSCNdbRNjVmkwYD0993vm79LueyOeibsoHRc16jhALrIJou1PFjdq7YQsYN0KtqRiJtaAfPprDBREpeamPuW/MnW0=";
+    // de static-key 256 3 8 "AwEAAbTe1PJi8EgIudNGb+KRTxBL2aCu5rXkZ+aIe/TC88pwRdrXYeXO Dp1ihZWFop5CrbWRBLrk/YUPBE8aBc6oJP+58dSkdMLYkjSkmvdvYx+z XnRLWlF2bapxvZxshATJDfGjGbCiWxKEOoyRx3UhICtHC+cUSddsEvzf acUcBb6n";
+
+    de initial-ds 26755 8 2 "F341357809A5954311CCB82ADE114C6C1D724A75C0395137AA3978035425E78D";
+
+};
+

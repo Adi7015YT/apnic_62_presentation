@@ -1,5 +1,3 @@
-include "/etc/bind/rndc.key";
-
 options {
 	directory "/var/cache/bind";
 	listen-on { any; };
@@ -26,13 +24,10 @@ options {
 	//========================================================================
 	dnssec-validation yes;
 
-	recursion yes;               // Enables recursive lookups
-    allow-transfer { none; };    // Disables zone transfers unless you have secondary DNS
+	recursion no;               // Enables recursive lookups
+    allow-transfer { none; };   // Disables zone transfers unless you have secondary DNS
     
 	listen-on-v6 { any; };
-
-	max-cache-ttl 5;
-	max-ncache-ttl 5;
 };
 
 statistics-channels {

@@ -1,20 +1,78 @@
 volumes:
   prometheus-data:
+  grafana-data:
+
+networks:
+  dns_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
 
 services:
+  bind9:
+    image: ubuntu/bind9:9.18-22.04_beta
+    container_name: bind9
+    restart: always
+    ports:
+      - "53:53/udp"
+      - "8053:8053/tcp"
+    environment:
+      - TZ=UTC
+      - BIND9_USER=bind
+    volumes:
+      - ./bind9:/etc/bind:rw
+    command: >
+      sh -c "
+        mkdir -p /var/cache/bind/keys /var/cache/bind/slaves &&
+        chown -R bind:bind /var/cache/bind &&
+        named -g -u bind -4
+      "
+    networks:
+      dns_network:
+        ipv4_address: 172.20.0.2
+
+  de:
+    image: ubuntu/bind9:9.18-22.04_beta
+    container_name: de-bind9
+    restart: always
+    # ports:
+    #   - "53:53/udp"
+    #   - "8053:8053/tcp"
+    environment:
+      - TZ=UTC
+      - BIND9_USER=bind
+    volumes:
+      - ./de:/etc/bind:rw
+    command: >
+      sh -c "
+        mkdir -p /var/cache/bind/keys /var/cache/bind/slaves &&
+        chown -R bind:bind /var/cache/bind &&
+        named -g -u bind -4
+      "
+    networks:
+      dns_network:
+        ipv4_address: 172.20.0.3
+
+
   bind_exporter:
-    image: prometheuscommunity/bind-exporter:v0.8.0
+    image: prometheuscommunity/bind-exporter:latest
     container_name: bind_exporter
     restart: always
-    network_mode: host
+    ports:
+      - "9119:9119"
     command:
-      - "--bind.stats-url=http://127.0.0.1:8053"
+      - "--bind.stats-url=http://bind9:8053"
+    networks:
+      dns_network:
+        ipv4_address: 172.20.0.4
 
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
     restart: always
-    network_mode: host
+    ports:
+      - "9090:9090"
     command:
       - "--web.enable-admin-api"
       - "--storage.tsdb.retention.time=15d"
@@ -23,3 +81,21 @@ services:
     volumes:
       - prometheus-data:/prometheus
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    networks:
+      dns_network:
+        ipv4_address: 172.20.0.5
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      dns_network:
+        ipv4_address: 172.20.0.6

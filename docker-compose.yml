@@ -43,7 +43,8 @@ services:
       - TZ=UTC
       - BIND9_USER=bind
     volumes:
-      - ./de:/etc/bind:rw
+      - ./de/bind:/etc/bind:rw
+      - ./de/cache:/var/cache/bind:rw
     command: >
       sh -c "
         mkdir -p /var/cache/bind/keys /var/cache/bind/slaves &&

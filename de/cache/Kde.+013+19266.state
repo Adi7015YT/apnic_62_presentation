@@ -1,0 +1,19 @@
+; This is the state of key 19266, for de.
+Algorithm: 13
+Length: 256
+Lifetime: 0
+KSK: yes
+ZSK: yes
+Generated: 20260610173429 (Wed Jun 10 17:34:29 2026)
+Published: 20260610173429 (Wed Jun 10 17:34:29 2026)
+Active: 20260610173429 (Wed Jun 10 17:34:29 2026)
+PublishCDS: 20260611183929 (Thu Jun 11 18:39:29 2026)
+DNSKEYChange: 20260610173429 (Wed Jun 10 17:34:29 2026)
+ZRRSIGChange: 20260610173429 (Wed Jun 10 17:34:29 2026)
+KRRSIGChange: 20260610173429 (Wed Jun 10 17:34:29 2026)
+DSChange: 20260610173429 (Wed Jun 10 17:34:29 2026)
+DNSKEYState: rumoured
+ZRRSIGState: rumoured
+KRRSIGState: rumoured
+DSState: hidden
+GoalState: omnipresent

@@ -9,7 +9,7 @@ import dns.rdatatype
 
 DNS_SERVER = "127.0.0.1"
 RETRIES = 5
-THREADS = 20
+THREADS = 50
 QPS = 50  # total queries per second across all workers
 
 

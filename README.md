@@ -1,3 +1,6 @@
+<video src="assets/Replicating the .de DNSSEC Incident.mp4" controls width="100%">
+  Your browser does not support the video tag.
+</video>
 
 
 ```sh

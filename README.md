@@ -30,6 +30,7 @@ docker compose exec -it de rndc dnssec -checkds -key <new-key-id> published de
 Add NTA
 ```sh
 docker compose exec -it de rndc nta de
+docker compose exec -it bind9 rndc nta de
 ```
 
 If any record is changed in .de, run the following command

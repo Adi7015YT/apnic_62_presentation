@@ -3,10 +3,10 @@
 ```sh
 chmod 777 ./de/bind/
 docker compose up
-dig @127.0.0.1 bund.de
+dig @127.0.0.1 bund.de +dnssec
 ```
 
-Open <IP>:3000
+Open [IP]:3000
 
 
 Load :
@@ -29,7 +29,6 @@ docker compose exec -it de rndc dnssec -checkds -key <new-key-id> published de
 
 Add NTA
 ```sh
-docker compose exec -it de rndc nta de
 docker compose exec -it bind9 rndc nta de
 ```
 

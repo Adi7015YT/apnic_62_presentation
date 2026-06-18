@@ -4,22 +4,22 @@ dnssec-policy "mypolicy" {
 	};
 	
 	# Key timings
-	dnskey-ttl PT100S;
+	dnskey-ttl PT10S;
 	publish-safety PT1S;
 	retire-safety PT1S;
 	purge-keys PT1S;
 	
 	# Signature timings
-	signatures-refresh PT5M;
-	signatures-jitter PT5M;
-	signatures-validity PT10M;
-	signatures-validity-dnskey PT10M;
+	signatures-refresh PT10S;
+	signatures-jitter PT10S;
+	signatures-validity PT20S;
+	signatures-validity-dnskey PT20S;
 	
 	# Zone parameters
 	# max-zone-ttl P1D;
-	zone-propagation-delay PT1M;
-	parent-ds-ttl PT10M;
-	parent-propagation-delay PT10M; 
+	zone-propagation-delay PT20S;
+	parent-ds-ttl PT20S;
+	parent-propagation-delay PT20S; 
 };
 
 options {

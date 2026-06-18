@@ -26,7 +26,8 @@ options {
 
 	recursion no;               // Enables recursive lookups
     allow-transfer { none; };   // Disables zone transfers unless you have secondary DNS
-    
+    dnssec-loadkeys-interval 1;
+
 	listen-on-v6 { any; };
 };
 

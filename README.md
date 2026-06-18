@@ -2,23 +2,32 @@
 
 ```sh
 chmod 777 ./de/bind/
-chmod 777 ./de/bind/db.de.signed.jnl 
 docker compose up
-/usr/bin/python3 client/app.py
 dig @127.0.0.1 bund.de
 ```
 
+Open <IP>:3000
+
+
+Load :
+```sh
+/usr/bin/python3 client/app.py
+```
+
+Monitor :
 ```sh
 watch -n 1 dig @172.20.0.3 DNSKEY de. +dnssec
 watch -n 1 docker compose exec -it de rndc dnssec -status de
 ```
 
+Rollover keys
 ```sh
 docker compose exec -it de rndc dnssec -rollover -key 19266 de && ls /var/cache/bind
 docker compose exec -it de rndc dnssec -checkds -key <new-key-id> published de
-# docker compose exec -it de rndc dnssec -checkds -key 07309 published de
+# Example : docker compose exec -it de rndc dnssec -checkds -key 07309 published de
 ```
 
+Add NTA
 ```sh
 docker compose exec -it de rndc nta de
 ```

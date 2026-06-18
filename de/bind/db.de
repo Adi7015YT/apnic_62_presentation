@@ -50,7 +50,8 @@ bund.de.                86400   IN      NS      dns-1.dfn.de.
 bund.de.                86400   IN      NS      xenon.bund.de.
 bund.de.                86400   IN      NS      bamberg.bund.de.
 bund.de.                86400   IN      NS      nuernberg.bund.de.
-bund.de.                86400   IN      DS      5320 8 2 B6ABE73B7B9025385B24F60F575CA69855960202CE1C70E1F6F65F08 DB9C19D4
+bund.de.                86400   IN      DS      44722 13 2 364CC415E0B5BA474A86E2C408C1A087D42E6C65D4F0FF9DF8D14F51 FD85CCB7
+
 
 argon.bund.de.          86400   IN      A       77.87.224.18
 xenon.bund.de.          86400   IN      A       77.87.224.71

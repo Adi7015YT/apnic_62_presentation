@@ -1,7 +1,6 @@
-<video src="assets/Replicating the .de DNSSEC Incident.mp4" controls width="100%">
-  Your browser does not support the video tag.
-</video>
+# Replicating the .de incident
 
+https://github.com/user-attachments/assets/62ebefaa-cce4-4bcb-a2e9-e6112871236d
 
 ```sh
 chmod 777 ./de/bind/

@@ -20,9 +20,9 @@ $TTL 7200
 @                     21600   IN      NS      l.de.net.
 
 ; Original
-a.nic.de.              86400   IN      A      194.0.0.53
-f.nic.de.              86400   IN      A      81.91.164.5
-z.nic.de.              86400   IN      A      194.246.96.1
+a.nic.de.              86400   IN      A      172.20.0.3
+f.nic.de.              86400   IN      A      172.20.0.3
+z.nic.de.              86400   IN      A      172.20.0.3
 
 ; DNSSEC KEYS
 

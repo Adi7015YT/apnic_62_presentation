@@ -1,3 +1,27 @@
+dnssec-policy "mypolicy" {
+	keys {
+		csk key-directory lifetime unlimited algorithm ecdsa256;
+	};
+	
+	# Key timings
+	dnskey-ttl PT100S;
+	publish-safety PT1S;
+	retire-safety PT1S;
+	purge-keys PT1S;
+	
+	# Signature timings
+	signatures-refresh PT5M;
+	signatures-jitter PT5M;
+	signatures-validity PT10M;
+	signatures-validity-dnskey PT10M;
+	
+	# Zone parameters
+	# max-zone-ttl P1D;
+	zone-propagation-delay PT1M;
+	parent-ds-ttl PT10M;
+	parent-propagation-delay PT10M; 
+};
+
 options {
 	directory "/var/cache/bind";
 	listen-on { any; };

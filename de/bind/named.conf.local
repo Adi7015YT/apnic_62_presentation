@@ -11,6 +11,6 @@ zone "de" {
 	file "/etc/bind/db.de";
 	
 	// Enables modern automatic signing using the default policy
-	dnssec-policy default;
+	dnssec-policy mypolicy;
 	inline-signing yes;
 };

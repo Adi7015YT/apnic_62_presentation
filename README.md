@@ -2,7 +2,7 @@
 
 ```sh
 chmod 777 ./de/bind/
-docker compose up
+docker compose up -d
 dig @127.0.0.1 bund.de +dnssec
 ```
 
